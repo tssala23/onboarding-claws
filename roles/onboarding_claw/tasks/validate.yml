@@ -4,7 +4,9 @@
     that:
       - claw_output_dir | length > 0
       - claw_output_dir is ansible.builtin.abs
-      - employee_id is match('^[A-Za-z0-9][A-Za-z0-9_-]{2,63}$')
+      - preferred_name is string
+      - preferred_name | trim | length > 0
+      - preferred_name | length <= 100
       - role in supported_roles
       - communication_style in supported_styles
       - day_start is match('^(?:[01][0-9]|2[0-3]):[0-5][0-9]$')

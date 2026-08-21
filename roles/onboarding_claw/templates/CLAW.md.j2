@@ -1,7 +1,7 @@
 ---
 schemaVersion: 1
 agent:
-  id: "enterprise-{{ employee_id | lower | regex_replace('_', '-') }}"
+  id: "enterprise-{{ role | replace('_', '-') }}"
   name: "{{ supported_roles[role].display_name }} Assistant"
   description: "{{ supported_roles[role].summary }}"
   identity:

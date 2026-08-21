@@ -13,7 +13,7 @@ for persona in "${roles[@]}"; do
     output="$test_root/${persona}-${style}"
     ANSIBLE_CONFIG="$repo_root/ansible.cfg" ansible-playbook \
       "$repo_root/playbooks/generate-claw.yml" \
-      -e "employee_id=test-${persona}-${style}" \
+      -e 'preferred_name=Taylor' \
       -e "role=$persona" \
       -e 'day_start=08:30' \
       -e 'timezone=America/New_York' \

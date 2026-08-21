@@ -78,7 +78,7 @@ this repository's responsibility.
 
 | Field | Purpose |
 | --- | --- |
-| `employee_id` | Opaque identifier used for the initial agent and private package names |
+| `preferred_name` | Name the agent should use when addressing the person |
 | `role` | One of the six supported persona keys |
 | `day_start` | User's local workday start in `HH:MM` form |
 | `timezone` | Confirmed IANA timezone such as `America/New_York` |
@@ -93,6 +93,13 @@ this repository's responsibility.
 The JSON Schema at `schemas/onboarding.schema.json` is suitable for validation in the
 calling application. The Ansible role repeats safety-critical validation at render
 time.
+
+`preferred_name` is initialized in `USER.md`, which OpenClaw uses for stable user
+preferences and how the agent relates to the person. It does not belong in `SOUL.md`;
+that file describes the agent's own voice and personality. The generated package and
+default agent IDs are role-based and contain no employee identifier. A downstream
+installer placing multiple agents of the same role on one Gateway should supply its
+own collision-free `--agent-id` during Claw preview and apply.
 
 ## Privacy
 

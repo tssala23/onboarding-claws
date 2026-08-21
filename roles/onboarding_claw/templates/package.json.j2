@@ -1,5 +1,5 @@
 {
-  "name": "@enterprise/onboarding-{{ employee_id | lower | regex_replace('_', '-') }}",
+  "name": "@enterprise/onboarding-{{ role | replace('_', '-') }}",
   "version": "{{ claw_catalog_version }}",
   "private": true,
   "type": "module",

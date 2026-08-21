@@ -5,7 +5,7 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "employee_id",
+    "preferred_name",
     "role",
     "day_start",
     "timezone",
@@ -16,9 +16,10 @@
     "claw_output_dir"
   ],
   "properties": {
-    "employee_id": {
+    "preferred_name": {
       "type": "string",
-      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{2,63}$"
+      "minLength": 1,
+      "maxLength": 100
     },
     "role": {
       "enum": [
