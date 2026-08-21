@@ -8,6 +8,10 @@ install the generated Claw, configure credentials, retain generated agents, or m
 them after handoff. A downstream pipeline receives the generated directory and owns
 everything that follows.
 
+New to OpenClaw? Read [OpenClaw agents and Claws: a guide for app developers](docs/openclaw-agents-and-claws.md)
+for an explanation of the workspace files that shape an agent, what the experimental
+Claws feature installs, and how this repository connects the two.
+
 ## What onboarding controls
 
 The generator combines three layers:
