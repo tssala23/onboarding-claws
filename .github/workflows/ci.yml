@@ -1,0 +1,47 @@
+---
+name: CI
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
+      - name: Install validation tools
+        run: pip install ansible-core ansible-lint yamllint check-jsonschema
+
+      - name: Install OpenClaw with experimental Claws support
+        run: npm install --global openclaw@2026.8.1-beta.2
+
+      - name: Validate onboarding schema
+        run: check-jsonschema --check-metaschema schemas/onboarding.schema.json
+
+      - name: Run YAML lint
+        run: yamllint .
+
+      - name: Run Ansible lint
+        run: ansible-lint
+
+      - name: Test schedule filter
+        run: python -m unittest discover -s tests/unit -v
+
+      - name: Generate role and style matrix
+        run: tests/integration/generate_matrix.sh

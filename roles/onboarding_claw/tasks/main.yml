@@ -1,0 +1,16 @@
+---
+- name: Validate onboarding input
+  ansible.builtin.include_tasks: validate.yml
+
+- name: Calculate morning briefing schedule
+  ansible.builtin.include_tasks: schedule.yml
+
+- name: Render Claw project
+  ansible.builtin.include_tasks: render.yml
+
+- name: Verify generated Claw project
+  ansible.builtin.include_tasks: verify.yml
+
+- name: Report generated Claw path
+  ansible.builtin.debug:
+    msg: "Generated personalized Claw at {{ claw_output_dir }}"

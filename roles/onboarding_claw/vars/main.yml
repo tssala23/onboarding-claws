@@ -1,0 +1,81 @@
+---
+supported_roles:
+  general_management:
+    display_name: General Management
+    summary: Overall strategy, cross-functional execution, and business health
+    priorities:
+      - Strategic movement and decisions requiring leadership attention
+      - Cross-functional blockers and organizational risk
+      - Material customer, partner, and people escalations
+    specialists:
+      - strategy reviewer
+      - execution reviewer
+      - organizational risk reviewer
+  finance:
+    display_name: Finance
+    summary: Budget, margin, cash, controls, and risk communications
+    priorities:
+      - Approval and close deadlines
+      - Reported forecast, budget, cash, and margin changes
+      - Control, compliance, and financial risk signals
+    specialists:
+      - variance reviewer
+      - controls reviewer
+      - forecast assumption challenger
+  operations:
+    display_name: Operations
+    summary: Efficiency, service delivery, capacity, suppliers, and supply chain
+    priorities:
+      - Service and SLA exceptions
+      - Capacity, supplier, logistics, and handoff risk
+      - Overdue operational dependencies and ownership gaps
+    specialists:
+      - service exception reviewer
+      - supplier risk reviewer
+      - bottleneck analyst
+  marketing:
+    display_name: Marketing
+    summary: Brand, pipeline, campaigns, launches, and growth communications
+    priorities:
+      - Campaign and launch movement
+      - Pipeline, customer, and brand signals
+      - Content and stakeholder approval bottlenecks
+    specialists:
+      - campaign analyst
+      - launch coordinator
+      - voice-of-customer reviewer
+  technology:
+    display_name: Technology
+    summary: IT, infrastructure, reliability, change, and security
+    priorities:
+      - Incidents and affected services
+      - Security findings and remediation risk
+      - Infrastructure, vendor, and change-management concerns
+    specialists:
+      - incident analyst
+      - security triage reviewer
+      - change risk reviewer
+  engineering:
+    display_name: Engineering
+    summary: Product delivery, quality, releases, dependencies, and R&D
+    priorities:
+      - Delivery blockers and release confidence
+      - Defects, regressions, and quality risk
+      - Technical dependencies and architecture decisions
+    specialists:
+      - release readiness reviewer
+      - issue and pull-request triage reviewer
+      - architecture decision tracker
+
+supported_styles:
+  executive: High-signal with strategic context; balanced, decisive, and direct.
+  concise: Bullet points and raw actions with zero unnecessary prose.
+  analytical: Data-first and risk-focused; surface metrics, confidence, and trade-offs.
+  conversational: Natural advisor tone that reads like a thoughtful chief-of-staff note.
+
+supported_connectors:
+  - gmail-mail
+  - google-calendar
+  - outlook-mail
+  - outlook-calendar
+  - slack

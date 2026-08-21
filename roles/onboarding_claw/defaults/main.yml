@@ -1,0 +1,18 @@
+---
+claw_output_dir: ""
+employee_id: ""
+role: ""
+day_start: ""
+timezone: ""
+current_focus: []
+key_contacts: []
+communication_style: ""
+connectors: []
+working_days:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+brief_lead_minutes: 30
+claw_catalog_version: "0.1.0"

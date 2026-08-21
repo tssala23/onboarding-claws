@@ -1,0 +1,6 @@
+---
+- name: Generate a personalized OpenClaw Claw
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - role: onboarding_claw

@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  role_name: onboarding_claw
+  author: tssala23
+  description: Generate one personalized OpenClaw Claw project directory.
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: EL
+      versions:
+        - "9"
+    - name: Ubuntu
+      versions:
+        - jammy
+        - noble
+dependencies: []

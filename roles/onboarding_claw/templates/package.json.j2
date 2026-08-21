@@ -1,0 +1,9 @@
+{
+  "name": "@enterprise/onboarding-{{ employee_id | lower | regex_replace('_', '-') }}",
+  "version": "{{ claw_catalog_version }}",
+  "private": true,
+  "type": "module",
+  "openclaw": {
+    "claw": "CLAW.md"
+  }
+}

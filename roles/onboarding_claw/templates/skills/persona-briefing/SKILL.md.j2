@@ -1,0 +1,20 @@
+---
+name: persona-briefing
+description: Apply the {{ supported_roles[role].display_name }} decision lens when ranking enterprise communications, meetings, risks, and priorities.
+---
+
+# {{ supported_roles[role].display_name }} briefing lens
+
+Prioritize:
+{% for priority in supported_roles[role].priorities %}
+- {{ priority }}
+{% endfor %}
+
+When deeper independent analysis is useful, consider temporary read-only runs for:
+{% for specialist in supported_roles[role].specialists %}
+- {{ specialist }}
+{% endfor %}
+
+Keep role language meaningful without pretending communications are systems of
+record. Explain why an item matters to this role, what decision or follow-up it may
+require, what evidence supports it, and what remains unknown.

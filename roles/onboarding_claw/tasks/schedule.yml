@@ -1,0 +1,5 @@
+---
+- name: Derive cron schedule and validate timezone
+  ansible.builtin.set_fact:
+    morning_schedule: "{{ day_start | claw_morning_schedule(brief_lead_minutes, working_days, timezone) }}"
+  no_log: true

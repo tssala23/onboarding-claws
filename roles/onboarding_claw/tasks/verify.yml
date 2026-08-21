@@ -1,0 +1,62 @@
+---
+- name: Verify required generated files
+  ansible.builtin.stat:
+    path: "{{ claw_output_dir }}/{{ item }}"
+  loop:
+    - package.json
+    - CLAW.md
+    - BOOTSTRAP.md
+    - profiles/openclaw.yml
+    - workspace/AGENTS.md
+    - workspace/skills/enterprise-briefing/SKILL.md
+    - workspace/skills/persona-briefing/SKILL.md
+  register: generated_files
+
+- name: Assert generated files are private and nonempty
+  ansible.builtin.assert:
+    that:
+      - item.stat.exists
+      - item.stat.isreg
+      - item.stat.size > 0
+      - item.stat.mode == '0600'
+    fail_msg: A generated Claw file is missing, empty, or has unsafe permissions.
+  loop: "{{ generated_files.results }}"
+  loop_control:
+    label: "{{ item.item }}"
+
+- name: Validate generated package metadata JSON
+  ansible.builtin.command:
+    argv:
+      - python3
+      - -m
+      - json.tool
+      - "{{ claw_output_dir }}/package.json"
+  changed_when: false
+  no_log: true
+
+- name: Locate OpenClaw CLI
+  ansible.builtin.command:
+    argv:
+      - openclaw
+      - --version
+  register: openclaw_cli
+  changed_when: false
+  failed_when: false
+
+- name: Validate generated Claw with OpenClaw when installed
+  ansible.builtin.command:
+    argv:
+      - openclaw
+      - claws
+      - validate
+      - "{{ claw_output_dir }}"
+  environment:
+    OPENCLAW_EXPERIMENTAL_CLAWS: "1"
+  changed_when: false
+  when: openclaw_cli.rc == 0
+  no_log: true
+
+- name: Explain skipped OpenClaw validation
+  ansible.builtin.debug:
+    msg: OpenClaw CLI is unavailable; structural checks passed, but canonical Claw validation was skipped.
+  when: openclaw_cli.rc != 0

@@ -1,0 +1,11 @@
+.ansible/
+.cache/
+.molecule/
+.pytest_cache/
+__pycache__/
+*.pyc
+dist/
+generated/
+onboarding.yml
+onboarding.yaml
+*.tgz

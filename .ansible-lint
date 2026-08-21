@@ -1,0 +1,11 @@
+---
+profile: production
+exclude_paths:
+  - .cache/
+  - .ansible/
+  - generated/
+  - dist/
+mock_roles: []
+skip_list:
+  # These are intentionally the public input names used by the onboarding API.
+  - var-naming[no-role-prefix]

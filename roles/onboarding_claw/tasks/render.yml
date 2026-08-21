@@ -1,0 +1,35 @@
+---
+- name: Create private Claw directory structure
+  ansible.builtin.file:
+    path: "{{ claw_output_dir }}/{{ item }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - ""
+    - profiles
+    - workspace
+    - workspace/skills
+    - workspace/skills/enterprise-briefing
+    - workspace/skills/persona-briefing
+
+- name: Render root Claw files
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ claw_output_dir }}/{{ item.dest }}"
+    mode: "0600"
+  loop:
+    - src: package.json.j2
+      dest: package.json
+    - src: CLAW.md.j2
+      dest: CLAW.md
+    - src: BOOTSTRAP.md.j2
+      dest: BOOTSTRAP.md
+    - src: profiles/openclaw.yml.j2
+      dest: profiles/openclaw.yml
+    - src: workspace/AGENTS.md.j2
+      dest: workspace/AGENTS.md
+    - src: skills/enterprise-briefing/SKILL.md.j2
+      dest: workspace/skills/enterprise-briefing/SKILL.md
+    - src: skills/persona-briefing/SKILL.md.j2
+      dest: workspace/skills/persona-briefing/SKILL.md
+  no_log: true

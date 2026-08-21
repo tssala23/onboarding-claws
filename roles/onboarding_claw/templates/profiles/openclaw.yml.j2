@@ -1,0 +1,26 @@
+schemaVersion: 1
+agent:
+  sandbox:
+    mode: all
+    scope: agent
+    workspaceAccess: rw
+  tools:
+    allow:
+      - read
+      - write
+      - edit
+      - exec
+      - process
+      - cron
+      - sessions_spawn
+      - sessions_yield
+      - subagents
+    fs:
+      workspaceOnly: true
+  memory:
+    search:
+      enabled: true
+      rememberAcrossConversations: true
+      sources:
+        - memory
+        - sessions

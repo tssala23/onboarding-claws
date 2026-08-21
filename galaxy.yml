@@ -1,0 +1,26 @@
+---
+namespace: tssala23
+name: onboarding_claws
+version: 0.1.0
+readme: README.md
+authors:
+  - tssala23
+description: Generate personalized OpenClaw Claw project directories from enterprise onboarding answers.
+license:
+  - MIT
+tags:
+  - openclaw
+  - onboarding
+  - automation
+  - tools
+repository: https://github.com/tssala23/onboarding-claws
+dependencies: {}
+build_ignore:
+  - .git
+  - .github
+  - .ansible
+  - .cache
+  - .pytest_cache
+  - generated
+  - dist
+  - tests

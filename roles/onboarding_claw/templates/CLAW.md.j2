@@ -1,0 +1,47 @@
+---
+schemaVersion: 1
+agent:
+  id: "enterprise-{{ employee_id | lower | regex_replace('_', '-') }}"
+  name: "{{ supported_roles[role].display_name }} Assistant"
+  description: "{{ supported_roles[role].summary }}"
+  identity:
+    name: "{{ supported_roles[role].display_name }} Assistant"
+    theme: "Enterprise {{ supported_roles[role].display_name | lower }} advisor"
+    emoji: "📋"
+workspace:
+  bootstrapFiles:
+    AGENTS.md:
+      source: workspace/AGENTS.md
+  files:
+    - source: workspace/skills/enterprise-briefing/SKILL.md
+      path: skills/enterprise-briefing/SKILL.md
+    - source: workspace/skills/persona-briefing/SKILL.md
+      path: skills/persona-briefing/SKILL.md
+packages: []
+mcpServers: {}
+cronJobs:
+  - id: morning-executive-brief
+    name: "Morning {{ supported_roles[role].display_name }} brief"
+    schedule:
+      cron: "{{ morning_schedule.cron }}"
+      timezone: "{{ morning_schedule.timezone }}"
+    session: isolated
+    message: >-
+      Create today's governed executive brief. Use the enterprise-briefing and
+      persona-briefing skills. Read only configured sources, state source coverage,
+      distinguish reported claims from verified facts, and publish no external
+      messages or changes. Return decisions, priorities, risks, FYI items, and
+      meeting preparation in the user's preferred style.
+    delivery:
+      mode: none
+---
+
+{% include 'personas/' ~ role ~ '.md.j2' %}
+
+## Starting communication style
+
+{% include 'styles/' ~ communication_style ~ '.md.j2' %}
+
+This is a starting point, not a cage. Adapt as the user clarifies how they work and
+what they need. Preserve careful reasoning, evidence, privacy, and explicit approval
+for consequential actions even as the personality evolves.

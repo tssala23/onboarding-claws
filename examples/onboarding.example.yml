@@ -1,0 +1,23 @@
+---
+employee_id: employee-1234
+role: engineering
+day_start: "08:30"
+timezone: America/New_York
+current_focus:
+  - Complete the platform migration
+  - Prepare the September release
+key_contacts:
+  - directory_id: directory-object-5678
+    display_name: Jane Smith
+    email: jane.smith@example.com
+communication_style: analytical
+connectors:
+  - outlook-mail
+  - outlook-calendar
+  - slack
+working_days:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
